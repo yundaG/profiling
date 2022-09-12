@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ibench-l2?
+  namespace: xinan
+  labels:
+    name: ibench-l2?
+spec:
+  containers:
+    - image: mirrors.tencent.com/cloudns/cloudrepo:l2
+      name: ibench-l2?
+      command: ["/bin/sh"]
+      args: ["-c", "taskset -c ? ./l2 1200"]
+  tolerations:
+      - effect: NoSchedule
+        operator: Exists
+  nodeSelector:
+    kubernetes.io/hostname: node-100.91.31.242

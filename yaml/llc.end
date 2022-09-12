@@ -1,0 +1,5 @@
+#! /bin/bash
+for ((i=0;i<=29;i+=1))
+do
+        kubectl delete po ibench-llc${i} -n xinan &
+done

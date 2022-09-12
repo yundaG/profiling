@@ -1,0 +1,5 @@
+#! /bin/bash
+for ((i=0;i<=2;i++))
+do
+        kubectl delete po ibench-l1d${i} -n xinan &
+done
