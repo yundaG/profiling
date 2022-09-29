@@ -2,11 +2,13 @@ import sys
 
 def stoi(s):
     length = len(s)
+    idx = 0
     for i in range(length):
         if s[i]=='0':
-            s=s[1:]
+            idx += 1
         else:
             break
+    s = s[idx:]
     if len(s) == 0:
         return 0
     else:
