@@ -1,0 +1,2 @@
+cgexec -g cpu:XXX sh lXX.sh > XXX.log
+python spend_time.py XXX.log
