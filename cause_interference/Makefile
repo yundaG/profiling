@@ -3,8 +3,12 @@ default:
 	g++ -o l1i l1i.c -lrt
 	g++ -o l2 l2.c -lrt
 	g++ -o l3 l3.c -lrt
+	g++ -o memBw memBw.c
+	g++ -o memCap memCap.c
 clean:
 	rm l1d
 	rm l1i
 	rm l2
 	rm l3
+	rm memBw
+	rm memCap

@@ -1,0 +1,27 @@
+#! /usr/bin/python
+import os
+import commands
+import time
+
+request=30
+cores=commands.getoutput('cat /proc/cpuinfo| grep "processor"| wc -l')
+cores=eval(cores)
+quota=int((cores-request)*1.0/cores*100000)
+
+memTotal = 500 #G
+memRequest = 50 #G
+memEach = int((memTotal-memRequest)*1024.0/cores) #M
+
+
+def run():
+    for i in range(cores):
+        id=commands.getoutput("docker run --name ibench_memCap_"+str(i)+" --cpuset-cpus "+str(i)+" --cpu-quota "+str(quota)+" -m "+str(memEach)+"M -d mirrors.tencent.com/cloudns/cloudrepo:memCap ./memCap 300")
+    time.sleep(300)
+    os.system("date")
+    for i in range(cores):
+        os.system("docker container stop ibench_memCap_"+str(i)+" > /dev/null")
+        os.system("docker container rm ibench_memCap_"+str(i)+" > /dev/null")
+
+os.system("date")
+run()
+os.system("date")

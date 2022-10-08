@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
   begin = clock();
 
   //for (int j = 0; j < 10*usr_timer; j++) { 
-  for (int j = 0; j < 1000; j++) {
+  for (int j = 0; j < 100; j++) {
         switch (intensity) {
             case 0:  for (int i = 0; i < usr_timer; i++) { ICPOISON; } //intensity = 0;
             case 1:  for (int i = 0; i < usr_timer; i++) { ICPOISON2; } //intensity = 1;
